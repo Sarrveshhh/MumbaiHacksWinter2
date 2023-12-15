@@ -21,8 +21,8 @@ const createStore = (docs) => {
   return MemoryVectorStore.fromDocuments(docs, new OpenAIEmbeddings());
 };
 
-const docsFromGithub = async (github) => {
-  const loader = new GithubRepoLoader(github);
+const docsFromGithub = async (githubURL, branch) => {
+  const loader = new GithubRepoLoader(githubURL, { branch: branch });
 
   return await loader.loadAndSplit(
     new CharacterTextSplitter({
@@ -33,8 +33,8 @@ const docsFromGithub = async (github) => {
   );
 };
 
-const loadStore = async (githubURL) => {
-  const githubDocs = await docsFromGithub(githubURL);
+const loadStore = async (githubURL, branch) => {
+  const githubDocs = await docsFromGithub(githubURL, branch);
   return createStore([...githubDocs]);
 };
 
@@ -59,9 +59,10 @@ const newMessage = async (message) => {
 };
 
 app.post("/loadStore", async (req, res) => {
-  const githubURL = req.body.url;
+  const githubURL = req.body.githubURL;
+  const branch = req.body.branch;
   try {
-    store = await loadStore(githubURL);
+    store = await loadStore(githubURL, branch);
     res.status(200).json({ message: "Store loaded" });
   } catch (e) {
     console.log(e);
