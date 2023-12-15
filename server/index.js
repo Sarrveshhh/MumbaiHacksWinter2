@@ -17,9 +17,22 @@ const history = [
   },
 ];
 
+/**
+ *
+ * @param docs - Array of documents to create the store
+ * @returns MemoryVectorStore
+ */
+
 const createStore = (docs) => {
   return MemoryVectorStore.fromDocuments(docs, new OpenAIEmbeddings());
 };
+
+/**
+ *
+ * @param githubURL - URL of the github repo
+ * @param branch - Branch to load from
+ * @returns Array of documents
+ */
 
 const docsFromGithub = async (githubURL, branch) => {
   const loader = new GithubRepoLoader(githubURL, { branch: branch });
@@ -33,10 +46,24 @@ const docsFromGithub = async (githubURL, branch) => {
   );
 };
 
+/**
+ *
+ * @param githubURL - URL of the github repo
+ * @param branch - Branch to load from
+ * @returns MemoryVectorStore
+ */
+
 const loadStore = async (githubURL, branch) => {
   const githubDocs = await docsFromGithub(githubURL, branch);
   return createStore([...githubDocs]);
 };
+
+/**
+ *
+ * @param question - Question to ask
+ * @param results - Results from the similarity search
+ * @returns Formatted message
+ */
 
 const formatMessage = (question, results) => {
   return {
@@ -47,6 +74,12 @@ const formatMessage = (question, results) => {
         Context: ${results.map((r) => r.pageContent).join("\n")}`,
   };
 };
+
+/**
+ *
+ * @param message - Message to send to the AI
+ * @returns Response from the AI
+ */
 
 const newMessage = async (message) => {
   const results = await openai.chat.completions.create({
