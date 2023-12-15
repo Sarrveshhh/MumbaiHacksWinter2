@@ -9,13 +9,13 @@ app.use(express.json());
 const port = 8000;
 let store = new MemoryVectorStore();
 
-// const history = [
-//   {
-//     role: "system",
-//     content:
-//       "You are an AI guide for GitHub repositories. Assist users by providing information, answering queries, and performing basic actions within the repository. Offer guidance on navigation, code exploration, version control, issue management, collaboration, and common tasks. Aim to enhance the user experience for both beginners and experienced developers.",
-//   },
-// ];
+const history = [
+  {
+    role: "system",
+    content:
+      "You are an AI guide for GitHub repositories. Assist users by providing information, answering queries, and performing basic actions within the repository. Offer guidance on navigation, code exploration, version control, issue management, collaboration, and common tasks. Aim to enhance the user experience for both beginners and experienced developers.",
+  },
+];
 
 const createStore = (docs) => {
   return MemoryVectorStore.fromDocuments(docs, new OpenAIEmbeddings());
@@ -51,8 +51,7 @@ const formatMessage = (question, results) => {
 const newMessage = async (message) => {
   const results = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    // messages: [...history, message],
-    messages: [message],
+    messages: [...history, message],
     temperature: 0.7, // 0 = no creativity. 1 = lots of creativity
   });
 
@@ -71,15 +70,10 @@ app.post("/loadStore", async (req, res) => {
 });
 
 app.post("/query", async (req, res) => {
-  console.log(store.memoryVectors);
   const question = req.body.question;
   const results = await store.similaritySearch(question, 2);
   const message = formatMessage(question, results);
   const response = await newMessage(message);
-
-  history.push(message);
-  history.push(response);
-
   res.status(200).json({ message: response });
 });
 
