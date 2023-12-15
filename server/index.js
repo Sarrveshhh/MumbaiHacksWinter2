@@ -7,7 +7,7 @@ import express from "express";
 const app = express();
 app.use(express.json());
 const port = 8000;
-let store = new MemoryVectorStore();
+let store = None;
 
 const history = [
   {
