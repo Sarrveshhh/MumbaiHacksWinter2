@@ -30,7 +30,7 @@ function ChatApp() {
             <div className="output">
                 <div className="Branding">
                     <img src="https://static.vecteezy.com/system/resources/previews/021/059/827/original/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg" alt="Logo" />
-                    <h2>GitGPT</h2>
+                    <h2>ChadGPT</h2>
                     <h2>How can I help you today?</h2>
                 </div>
                 {finalPrompt}
