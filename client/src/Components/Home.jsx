@@ -38,11 +38,11 @@ export default function Home({ setIsLoading }) {
   return (
     <>
       <div className="bg-black h-screen flex flex-col items-center justify-center p-4">
-        <h1 className="headline text-8xl font-bold text-gray-800 mb-2">
+        <h1 className="headline text-12xl font-bold text-gray-800 mb-2">
           GitHub GPT.
         </h1>
         <p className="text-xl text-white mb-6">
-          A static code analysis toolkit to scan vulnerabilities blazing fast.
+            GPT powered coding tool that helps you understand github repositories
         </p>
         <p className="text-sm text-white mb-8">
           Just paste your GitHub repository link.
