@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
   color: white;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 html {
@@ -14,7 +15,7 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: #303030;
 }
 
 .chat-interface {
@@ -23,6 +24,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .outer-container {
@@ -32,14 +34,14 @@ body {
   margin: auto;
   flex-direction: column;
   padding: 32px 32px 0px 32px;
-  background-color: rgb(59, 47, 47);
-  border-radius: 32px;
+  background-color: #424242;
+  border-radius: 24px;
 }
 
 .output-window {
   height: 80vh;
-  border-radius: 32px;
-  background-color: rgb(70, 61, 61);
+  border-radius: 24px;
+  background-color: #303030;
   padding: 12px;
 }
 
@@ -48,6 +50,7 @@ body {
   background: -webkit-linear-gradient(#eee, rgb(31, 30, 30));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  box-shadow: white;
 }
 
 .input-window {
@@ -63,7 +66,30 @@ body {
   height: fit-content;
   font-size: large;
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 28px;
+  background-color: #303030;
+}
+
+.input-window:focus{
+  border-color: #424242;
+}
+
+.navbar{
+  display: flex;
+  /* justify-content: column; */
+  align-items: center;
+  /* background-color: aquamarine; */
+  width: 90%;
+  padding: 10px;
+}
+
+.company-icon{
+  width: 40px;
+  height: 40px;
+}
+
+.company-name{
+  padding: 7px;
 }
 
 .send-icon {
