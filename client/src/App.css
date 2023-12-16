@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.headline {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, rgb(31, 30, 30));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
