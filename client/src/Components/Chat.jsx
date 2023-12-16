@@ -57,6 +57,11 @@ function Chat() {
               setText(e.target.value);
             }}
             className="input-textbox"
+            onKeyPress={(event) => {
+              if(event.key === 'Enter'){
+                handleSubmit();
+              }
+            }}
             value={text}
             placeholder="E.g. Explain <something> from the <filename.py> file. "
           />
