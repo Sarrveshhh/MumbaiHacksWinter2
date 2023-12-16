@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background-color: #303030;
+  background-color: black;
 }
 
 .chat-interface {
@@ -42,7 +42,8 @@ body {
   height: 80vh;
   border-radius: 24px;
   background-color: #303030;
-  padding: 12px;
+  padding: 24px;
+  overflow-y: scroll;
 }
 
 .headline {
@@ -78,11 +79,11 @@ body {
   background-color: #303030;
 }
 
-.input-window:focus{
+.input-window:focus {
   border-color: #424242;
 }
 
-.navbar{
+.navbar {
   display: flex;
   /* justify-content: column; */
   align-items: center;
@@ -91,16 +92,52 @@ body {
   padding: 10px;
 }
 
-.company-icon{
+.company-icon {
   width: 40px;
   height: 40px;
 }
 
-.company-name{
+.company-name {
   padding: 7px;
 }
 
 .send-icon {
   font-size: xx-large;
   margin-left: 12px;
+}
+
+.bubble-ai {
+  background-color: black;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.bubble {
+  padding: 12px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.bubble-logo {
+  font-size: large;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.bubble-text {
+  margin-top: 6px;
+}
+
+.send-button {
+  cursor: pointer;
+  padding: 6px;
+  transition: all 300ms ease;
+}
+
+.send-button:hover {
+  background-color: grey;
+  border-radius: 100%;
 }
