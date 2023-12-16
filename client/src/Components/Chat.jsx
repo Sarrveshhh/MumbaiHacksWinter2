@@ -33,6 +33,7 @@ function Chat() {
               setText(e.target.value);
             }}
             className="input-textbox"
+            value={text}
             placeholder="E.g. Explain <something> from the <filename.py> file. "
           />
           <div
