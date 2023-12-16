@@ -4,8 +4,11 @@ import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { CharacterTextSplitter } from "langchain/text_splitter";
 import { GithubRepoLoader } from "langchain/document_loaders/web/github";
 import express from "express";
+import cors from "cors";
+
 const app = express();
 app.use(express.json());
+app.use(cors());
 const port = 8000;
 let store = null;
 
