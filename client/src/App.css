@@ -141,3 +141,7 @@ body {
   background-color: grey;
   border-radius: 100%;
 }
+
+.response-loader {
+  margin-right: 6px;
+}
