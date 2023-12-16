@@ -1,33 +1,41 @@
-import React,{useState} from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function Home() {
-    const [link,setLink] = useState(null);
-    const [branch,setBranch] = useState(null);
-    const handleLinkChange =(e)=>{
-        setLink(e.target.value);
+export default function Home({ setIsLoading }) {
+  const [link, setLink] = useState(null);
+  const [branch, setBranch] = useState(null);
+  const navigate = useNavigate();
+  const handleLinkChange = (e) => {
+    setLink(e.target.value);
+  };
+  const handleBranchChange = (e) => {
+    setBranch(e.target.value);
+  };
+  const handleSubmit = async (e) => {
+    setIsLoading(true);
+    const postData = {
+      githubURL: link,
+      branch: branch,
+    };
+    console.log(postData);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/loadStore",
+        postData
+      );
+      // Handle the response if needed
+      console.log("Response:", response);
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
+      navigate("/chat");
     }
-    const handleBranchChange = (e) =>{
-        setBranch(e.target.value);
-    }
-    const handleSubmit = async (e)=>{
-        const postData = {
-            githubURL:link,
-            branch: branch
-        };
-        console.log(postData)
-        try {
-            const response = await axios.post('http://localhost:8000/loadStore', postData);
-            // Handle the response if needed
-            console.log('Response:', response);
-          } catch (error) {
-            // Handle errors
-            console.error('Error:', error);
-          }
-    }
-    
+  };
+
   return (
-
     <>
       <div className="bg-gray-100 h-screen flex flex-col items-center justify-center p-4">
         <h1 className="headline text-8xl font-bold text-gray-800 mb-2">
@@ -55,7 +63,10 @@ export default function Home() {
             className=" p-4 text-black w-full bg-white rounded-lg focus:outline-none"
           />
         </div>
-        <button onClick={handleSubmit} className="w-1/5 py-3 mt-10 bg-black text-white uppercase tracking-wider font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 ">
+        <button
+          onClick={handleSubmit}
+          className="w-1/5 py-3 mt-10 bg-black text-white uppercase tracking-wider font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 "
+        >
           Start Analyzing
         </button>
       </div>

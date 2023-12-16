@@ -50,6 +50,14 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.spinner-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .input-window {
   height: 10vh;
   padding: 12px;
