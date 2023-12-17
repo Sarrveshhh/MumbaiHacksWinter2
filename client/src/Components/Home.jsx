@@ -26,12 +26,13 @@ export default function Home({ setIsLoading }) {
       );
       // Handle the response if needed
       console.log("Response:", response);
+      navigate("/chat");
     } catch (error) {
       // Handle errors
       console.error("Error:", error);
+      navigate("/");
     } finally {
       setIsLoading(false);
-      navigate("/chat");
     }
   };
 
@@ -42,7 +43,7 @@ export default function Home({ setIsLoading }) {
           GitHub GPT.
         </h1>
         <p className="text-xl text-white mb-6">
-            GPT powered coding tool that helps you understand github repositories
+          GPT powered coding tool that helps you understand github repositories
         </p>
         <p className="text-sm text-white mb-8">
           Just paste your GitHub repository link.

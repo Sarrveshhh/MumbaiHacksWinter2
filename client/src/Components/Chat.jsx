@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { TfiGithub } from "react-icons/tfi";
 import "../App.css";
@@ -17,19 +17,19 @@ function Chat() {
     setResponseLoading(true);
     setChats([...chats, { role: "user", text: text }]);
     let payload = { question: text };
+    setText("");
     let response = await axios.post("http://localhost:8000/query/", payload);
     setChats((chats) => [
       ...chats,
       { role: "bot", text: response.data.message.content },
     ]);
     setResponseLoading(false);
-    setText("");
   };
   return (
     <div className="chat-interface">
       <div className="navbar">
         <TfiGithub className="company-icon" />
-        <h4 className="company-name">GithubGPT</h4>
+        <h4 className="company-name">GitHub GPT</h4>
       </div>
 
       <div className="outer-container">
@@ -58,7 +58,7 @@ function Chat() {
             }}
             className="input-textbox"
             onKeyPress={(event) => {
-              if(event.key === 'Enter'){
+              if (event.key === "Enter") {
                 handleSubmit();
               }
             }}

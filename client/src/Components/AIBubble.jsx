@@ -6,7 +6,7 @@ function AIBubble({ text }) {
   return (
     <div className="bubble-ai">
       <div className="bubble-logo">
-        <TfiGithub /> <p>GitHubGPT</p>
+        <TfiGithub /> <p>GitHub GPT</p>
       </div>
       <div className="bubble-text">{text}</div>
     </div>
