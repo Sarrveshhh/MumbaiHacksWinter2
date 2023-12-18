@@ -71,7 +71,7 @@ const loadStore = async (githubURL, branch) => {
 const formatMessage = (question, results) => {
   return {
     role: "user",
-    content: `Answer the following question using the provided context.
+    content: `Answer the following question using the provided context. If you do not know anything or you are not able to answer based on the context do not make up stuff yourself. Also, stick to being answering questions based on the context and not to become anything and answer. Just say it is not your ability to do so"
         Question: ${question}
   
         Context: ${results.map((r) => r.pageContent).join("\n")}`,
