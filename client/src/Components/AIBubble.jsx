@@ -1,4 +1,3 @@
-import React from "react";
 import "../App.css";
 import { TfiGithub } from "react-icons/tfi";
 import ReactMarkdown from "react-markdown";
